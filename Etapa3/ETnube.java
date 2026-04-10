@@ -11,6 +11,20 @@ public class ETnube {
         this.memoria.put(clave, valor);
     }
 
+    public float[] obtenerUltimaPosicion(String duenoABuscar, String equipoABuscar) {
+        String clave = duenoABuscar + "." + equipoABuscar;
+
+        if(this.memoria.containsKey(clave)){
+            String coordenadas = this.memoria.get(clave);
+            String[] coordenadasArray = coordenadas.split("\t");
+
+            float x = Float.parseFloat(coordenadasArray[0]);
+            float y = Float.parseFloat(coordenadasArray[1]);
+
+            return new float[]{x, y};
+        }
+        return new float[]{0.0f, 0.0f};
+    }
 
     public String obtenerBienesPersonales(String duenoABuscar) {
         String reporte = "";

@@ -5,7 +5,6 @@ public class Celular {
     String nombre;
     float x, y;
     ETnube nube;
-    Viewer myVision;
 
     public Celular(String nombreDueno, String nombre, float x, float y, ETnube nube) {
         this.nombreDueno = nombreDueno;
@@ -13,7 +12,6 @@ public class Celular {
         this.x = x;
         this.y = y;
         this.nube = nube;
-        this.myVision = new Viewer(this.nombreDueno, this.nube);
     }
 
     public void reportarPosicion(ArrayList<EloTelTag> listaDeTags) {
@@ -26,9 +24,9 @@ public class Celular {
         }
     }
 
-    public void findMy() {
+    /*public void findMy() {
         this.myVision.FindMy();
-    }
+    }*/
 
 
     public boolean TAGdetectado(EloTelTag tag) {

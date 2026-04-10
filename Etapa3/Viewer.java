@@ -1,15 +1,45 @@
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 
 public class Viewer {
-    private String ownerName;
     private ETnube nube;
+    private PrintWriter csvWriter;
+    private List<String> duenos;
+    private List<String> equipos;
 
-    public Viewer(String ownerName, ETnube nube) {
-        this.ownerName = ownerName;
+    public Viewer(ETnube nube, List<String> duenos, List<String> equipos) {
         this.nube = nube;
+        this.duenos = duenos;
+        this.equipos = equipos;
+
+        try {
+            this.csvWriter = new PrintWriter(new File("output.csv"));
+            escribirEncabezado();
+        } catch (IOException e) {
+            System.out.println("Error al crear output.csv" + e.getMessage());
+        }
     }
 
-    public void FindMy(){
+    private void escribirEncabezado() {
+        StringBuilder sb = new StringBuilder("Step");
+        for (int i = 0; i < duenos.size(); i++) {
+            sb.append("\t").append(duenos.get(i)).append(".").append(equipos.get(i)).append(".x\t.y");
+        }
+        csvWriter.println(sb.toString());
+    }
+
+    public void registrarPaso(int step){
+        StringBuilder sb = new StringBuilder();
+        sb.append(step);
+        for (int i = 0; i < duenos.size(); i++) {
+            float[] pos = nube.obtenerUltimaPosicion(duenos.get(i), equipos.get(i));
+            sb.append("\t").append(pos[0]).append("\t").append(pos[1]);
+        }
+        csvWriter.println(sb.toString());
+        csvWriter.flush();
+    }
+
+    public void FindMy(String ownerName){
         System.out.println("Cosas de "+ ownerName + ": ");
 
         String reporte = nube.obtenerBienesPersonales(ownerName);
@@ -28,7 +58,7 @@ public class Viewer {
 
             String coordenadas = partes[1].replace("\t",", ");
 
-            if (!nombreEquipo.equals("celular") && !nombreEquipo.equals("table")){
+            if (!nombreEquipo.equals("celular") && !nombreEquipo.equals("tablet")){
                 System.out.println(nombreEquipo +": "+coordenadas);
             }
         }
@@ -44,6 +74,12 @@ public class Viewer {
                 System.out.println(nombreEquipo +": "+coordenadas);
             }
 
+        }
+    }
+
+    public void cerrar(){
+        if(csvWriter != null){
+            csvWriter.close();
         }
     }
 }

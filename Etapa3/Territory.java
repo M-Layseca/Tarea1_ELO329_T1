@@ -16,6 +16,7 @@ public class Territory {  // Piece of land where cellulars, tags, and tablets ar
         return null;
     }
 
+
     private ArrayList<Celular> celulares = new ArrayList<>();
     public void addCelular(Celular cel) {
         celulares.add(cel);
