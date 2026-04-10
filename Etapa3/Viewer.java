@@ -10,21 +10,40 @@ public class Viewer {
     }
 
     public void FindMy(){
-        System.out.println("Cosas de "+ownerName+": ");
-        ArrayList<ETNube.Data> listaEquipos = nube.obtenerEquipos(ownerName);
+        System.out.println("Cosas de "+ ownerName + ": ");
 
-        System.out.println("Ítems:");
-        for (ETNube.Data equipo: listaEquipos){
-            if (!equipo.equipmentName.equals("celular") && !equipo.equipmentName.equals("tablet")){
-                System.out.println(equipo.equipmentName +": "+equipo.location.getX() + ", "+ equipo.location.getY());
+        String reporte = nube.obtenerBienesPersonales(ownerName);
+
+        if (reporte.startsWith("No se encontraron")){
+            System.out.println(reporte);
+            return;
+        }
+
+        String[] lineasEquipos = reporte.split("\n");
+
+        System.out.println("Ítems: ");
+        for (String linea : lineasEquipos){
+            String[] partes = linea.split(": ");
+            String nombreEquipo = partes[0];
+
+            String coordenadas = partes[1].replace("\t",", ");
+
+            if (!nombreEquipo.equals("celular") && !nombreEquipo.equals("table")){
+                System.out.println(nombreEquipo +": "+coordenadas);
             }
         }
 
-        System.out.println("Dispositivos:");
-        for (ETNube.Data equipo: listaEquipos){
-            if (equipo.equipmentName.equals("celular") || equipo.equipmentName.equals("tablet")){
-                System.out.println(equipo.equipmentName +": "+equipo.location.getX() + ", "+ equipo.location.getY());
+        System.out.println("Dispositivos: ");
+        for (String linea : lineasEquipos){
+            String[] partes = linea.split(": ");
+            String nombreEquipo = partes[0];
+
+            String coordenadas = partes[1].replace("\t",", ");
+
+            if (nombreEquipo.equals("celular") || nombreEquipo.equals("tablet")){
+                System.out.println(nombreEquipo +": "+coordenadas);
             }
+
         }
     }
 }

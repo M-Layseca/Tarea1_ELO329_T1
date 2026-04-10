@@ -1,0 +1,4 @@
+Ana.celular 50.0 50.0
+Carlos.notebook -12.0 0.0
+Carlos.celular 0.0 1.0
+Luis.celular -9.0 -9.0

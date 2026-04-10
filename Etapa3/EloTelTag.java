@@ -24,4 +24,12 @@ public class EloTelTag  {
     private final String name;
     private final String ownerName;
     private float x,y;
+
+    public float getX() {
+        return this.x;
+    }
+
+    public float getY() {
+        return this.y;
+    }
 }
