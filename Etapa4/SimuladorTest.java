@@ -62,6 +62,7 @@ public class SimuladorTest {
 
         Viewer viewer = new Viewer(nube, listDuenos, listEquipos);
         for (Tablet t : tablets) t.setViewer(viewer);
+        for (Celular c : celulares) c.setViewer(viewer);
 
         ArrayList<EloTelTag> todosLosRastreables = new ArrayList<>();
         todosLosRastreables.addAll(tags);
@@ -84,9 +85,13 @@ public class SimuladorTest {
 
                 if (accion.equals("FindMy")) {
                     if (equipo.equals("celular")) {
-                        viewer.FindMy(dueno);
+                        for (Celular c : celulares) {
+                            if(c.nombreDueno.equals(dueno)){c.findMy();}
+                        }
                     } else if (equipo.equals("tablet")) {
-                        for(Tablet t : tablets) if(t.getOwnerName().equals(dueno)) t.findMy();
+                        for(Tablet t : tablets) {
+                            if (t.getOwnerName().equals(dueno)) t.findMy();
+                        }
                     }
                 } else {
                     float dx = Float.parseFloat(accion);

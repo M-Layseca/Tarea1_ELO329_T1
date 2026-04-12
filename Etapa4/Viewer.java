@@ -43,7 +43,7 @@ public class Viewer {
     }
 
     public void FindMy(String ownerName){
-        System.out.println("Cosas de "+ ownerName + ": ");
+        System.out.println("Bienes de "+ ownerName + ": ");
 
         String reporte = nube.obtenerBienesPersonales(ownerName);
 

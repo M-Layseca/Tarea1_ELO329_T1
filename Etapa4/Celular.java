@@ -24,9 +24,17 @@ public class Celular {
         }
     }
 
-    /*public void findMy() {
-        this.myVision.FindMy();
-    }*/
+    private Viewer viewer;
+
+    public void setViewer(Viewer viewer) {
+        this.viewer = viewer;
+    }
+
+    public void findMy() {
+        if(this.viewer != null) {
+            this.viewer.FindMy(this.nombreDueno);
+        }
+    }
 
 
     public boolean TAGdetectado(EloTelTag tag) {
