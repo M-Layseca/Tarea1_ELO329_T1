@@ -28,6 +28,10 @@ public class T1Stage1 {
         }
 
         Viewer visorCentral = new Viewer(stage.nube, stage.globalDuenos, stage.globalEquipos);
+
+        for(Celular cel : stage.territory.getTodosLosCelulares()) {
+            cel.setViewer(visorCentral);
+        }
         stage.runSimulation(movFile, System.out, visorCentral);
 
         System.out.println("\n--- REPORTE FINAL DE LA NUBE (FindMy) ---");
@@ -82,25 +86,34 @@ public class T1Stage1 {
             String[] parts = equipment.split("\\.");
             String personName = parts[0];
             String equipmentName = parts[1];
-            if (!in.hasNextFloat()) break;
-            float deltaX = in.nextFloat();
 
-            if (!in.hasNextFloat()) break;
-            float deltaY = in.nextFloat();
-
-            if (equipmentName.equals("celular")) {
-                Celular cel = territory.getCelular(personName);
-                if (cel != null) {
-                    cel.x += deltaX;
-                    cel.y += deltaY;
-                    cel.reportarPosicion(territory.getTags());
+            String action = in.next();
+            if (action.equals("FindMy")) {
+                if (equipmentName.equals("celular")) {
+                    Celular cel = territory.getCelular(personName);
+                    if (cel != null) {
+                        cel.findMy();
+                    }
                 }
             } else {
-                EloTelTag tag = territory.getTag(personName, equipmentName);
-                if (tag != null) {
-                    tag.move(deltaX, deltaY);
+                float deltaX = Float.parseFloat(action);
+                float deltaY = in.nextFloat();
+
+                if (equipmentName.equals("celular")) {
+                    Celular cel = territory.getCelular(personName);
+                    if (cel != null) {
+                        cel.x += deltaX;
+                        cel.y += deltaY;
+                        cel.reportarPosicion(territory.getTags());
+                    }
+                } else {
+                    EloTelTag tag = territory.getTag(personName, equipmentName);
+                    if (tag != null) {
+                        tag.move(deltaX, deltaY);
+                    }
                 }
             }
+
 
             visor.registrarPaso(step);
             territory.printState(output, step);
