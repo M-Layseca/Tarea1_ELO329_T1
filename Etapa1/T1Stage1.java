@@ -44,7 +44,7 @@ public class T1Stage1 {
     public void runSimulation(Scanner in, PrintStream output) {
         territory.printHeader(output);
         territory.printState(output, step);
-        while (in.hasNextLine()) {
+        while (in.hasNext()) {
             step++;
             String equipment = in.next();
             String[] parts = equipment.split("\\.");
