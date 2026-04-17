@@ -23,7 +23,6 @@ public class SimuladorTest {
         try (Scanner scConfig = new Scanner(new File(args[0]))) {
             scConfig.useLocale(Locale.US); // Para asegurar que lea puntos decimales
 
-            // Usamos nextInt() en lugar de parseInt() porque ignora caracteres invisibles (BOM)
             if (!scConfig.hasNextInt()) return;
             int numPersonas = scConfig.nextInt();
 
