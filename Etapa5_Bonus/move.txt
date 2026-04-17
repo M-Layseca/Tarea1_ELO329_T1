@@ -1,0 +1,6 @@
+Juan.llaves 10.0 5.0
+Juan.celular FindMy
+Pedro.maleta -2.0 3.0
+Pedro.celular Sound maleta
+Diego.mochila 5.5 -1.2
+Diego.tablet FindMy
