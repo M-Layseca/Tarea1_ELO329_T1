@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class T1Stage1 {
@@ -24,6 +23,7 @@ public class T1Stage1 {
         stage.setupSimulator(confFile);  // read configuration file and create objects
         stage.runSimulation(movFile, System.out); // execute file's instructions
         System.out.println("\n--- REPORTE FINAL DE LA NUBE (FindMy) ---");
+        System.out.println(stage.nube.obtenerBienesPersonales("Juan"));
         System.out.println(stage.nube.obtenerBienesPersonales("Elpepe"));
     }
     public void setupSimulator(Scanner in) {  // create objects from file
