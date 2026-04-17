@@ -9,7 +9,7 @@ JVM = java
 CONFIG = config.txt
 MOVE = move.txt
 
-# Clase que contiene el método main
+# Clase que contiene el metodo main
 MAIN = T1Stage1
 
 # Identificar todos los archivos fuente .java
