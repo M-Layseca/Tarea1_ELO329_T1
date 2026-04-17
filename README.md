@@ -7,3 +7,5 @@ Desarrollo de la primera tarea de la asignatura ELO329 utfsm grupo 1
 - Joaquín Torres
 - Diego Villanueva
 - Eduardo Canales
+
+### Implementamos el bonus del comando sound, se encuentra en la carpeta Etapa5_Bonus
