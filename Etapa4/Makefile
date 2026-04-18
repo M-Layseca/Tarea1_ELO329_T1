@@ -1,18 +1,32 @@
-# Variables
-JC = javac
-JVM = java
-JFLAGS = -g
+# Makefile para Tarea 1 - Etapa 4 (ELO329 - UTFSM)
 
-SOURCES = EloTelTag.java ETnube.java Viewer.java Celular.java Tablet.java SimuladorTest.java
+# Variables de compilación
+JCC = javac
+JFLAGS = -g
+JVM = java
+
+# Archivos de entrada (Parámetros del main)
+CONFIG = config.txt
+MOVE = move.txt
+
+# Clase que contiene el metodo main
+MAIN = SimuladorTest
+
+# Identificar todos los archivos fuente .java
+SOURCES = $(wildcard *.java)
 CLASSES = $(SOURCES:.java=.class)
 
+# 1. Regla por defecto: Compila todos los archivos .java
 all: $(CLASSES)
 
+# Regla para transformar cada .java en un .class
 %.class: %.java
-	$(JC) $(JFLAGS) $<
+	$(JCC) $(JFLAGS) $<
 
+# 2. Regla para ejecutar la simulación con los argumentos requeridos
 run: all
-	$(JVM) SimuladorTest config.txt move.txt
+	$(JVM) $(MAIN) $(CONFIG) $(MOVE)
 
+# 3. Regla para limpiar archivos compilados (basura)
 clean:
-	rm -f *.class output.csv
+	rm -f *.class
