@@ -37,7 +37,7 @@ public class Territory {  // Piece of land where cellulars, tags, and tablets ar
     public void printHeader(PrintStream output) {
         output.print("Step\t");
         for (EloTelTag tag : tags)
-            output.print(tag.getState()+"\t");
+            output.print(tag.getHeader()+"\t");
         output.println();
     }
 
