@@ -14,7 +14,7 @@ Para compilar y ejecutar este proyecto, necesitas tener instalado:
 * **Java Development Kit (JDK)** (Versión 21 o superior)
 * **GNU Make** (Estándar en la mayoría de distribuciones Linux/Ubuntu)
 
-## ⚙️ Compilación y Ejecución
+## Compilación y Ejecución
 
 El proyecto incluye un `Makefile` configurado para facilitar su uso desde la terminal.
 
